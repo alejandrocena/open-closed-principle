@@ -6,11 +6,15 @@ import processEventOriented from './runtimes/event-oriented.js';
 const logger = console;
 
 
+
+// PIPES & FILTERS
+
 const filterEvenStores = payload => {
     if(payload.store % 2 == 0) {
         return payload;
     } else {
-        logger.info("Batch Discarted cause Odd Store");
+        payload.skip=true;
+        return;
     }
 };
 
@@ -33,5 +37,15 @@ const priorityQueueCriteria = payload => {
     return payload;
 }
 
-processPipesFilters(['uno','dos','tres','cuatro','cinco','seis'], 22346,[filterEvenStores],[splitBatchIntoChunks,priorityQueueCriteria]);
 
+
+
+
+
+//processPipesFilters(['uno','dos','tres','cuatro','cinco','seis'], 22346,[filterEvenStores],[splitBatchIntoChunks,priorityQueueCriteria]);
+//processPipesFilters(['uno','dos','tres','cuatro','cinco','seis'], 22346);
+
+
+// EVENT ORIENTED
+//processPipesFilters(['uno','dos','tres','cuatro','cinco','seis'], 22346,[filterEvenStores],[splitBatchIntoChunks,priorityQueueCriteria]);
+//processEventOriented(['uno','dos','tres','cuatro','cinco','seis'], 22346);
