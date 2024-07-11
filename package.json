@@ -1,0 +1,22 @@
+{
+  "name": "open-closed-exercise",
+  "version": "1.0.0",
+  "description": "An Open Closed Exercise",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "keywords": [
+    "Open",
+    "Closed",
+    "Principle",
+    "functional",
+    "programming",
+    "events",
+    "rxjs"
+  ],
+  "author": "Alejandro Cena",
+  "license": "ISC"
+}
