@@ -10,15 +10,16 @@ const Events = {
 
 const DEFAULT_QUEUE = 'standard';
 
-const main_process = async (batch, store, batchReceivedFunctions=[], batchPrePrublishFunctions=[]) => {
+const main_process = async (batch, store, batchReceivedFunctions=[], batchPrePublishFunctions=[]) => {
 
-    batchPrePrublishFunctions.map( handler => EventEmmiter.on(Events.BatchPrePublish, handler))
+    batchReceivedFunctions.map( handler => EventEmmiter.on(Events.BatchReceived, handler))
+    batchPrePublishFunctions.map( handler => EventEmmiter.on(Events.BatchPrePublish, handler));
 
     const batchReceivedPayload = { batch, store, skip:false};
     EventEmmiter.emit(Events.BatchReceived, batchReceivedPayload);
     if (!batchReceivedPayload.skip) {
         const prePublishPayload = { batches:[batchReceivedPayload.batch], store: batchReceivedPayload.store, queue: DEFAULT_QUEUE };
-        EventEmmiter.emit(Events.BatchReceived, prePublishPayload);
+        EventEmmiter.emit(Events.BatchPrePublish, prePublishPayload);
         const publishingCalls = prePublishPayload.batches.map( batch => publish(prePublishPayload.queue, {store: prePublishPayload.store, batch }));
         await Promise.all(publishingCalls);
     }
