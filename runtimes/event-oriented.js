@@ -25,7 +25,4 @@ const main_process = async (batch, store, batchReceivedFunctions=[], batchPrePub
     }
 };
 
-export const handlers = [
-
-];
 export default main_process;

@@ -49,5 +49,5 @@ const priorityQueueCriteria = payload => {
 
 
 // LARGE DATA PROCESSING
-//processEventOriented(data.batch, data.store,[filterEvenStores],[splitBatchIntoChunks,priorityQueueCriteria]);
+processEventOriented(data.batch, data.store,[filterEvenStores],[splitBatchIntoChunks,priorityQueueCriteria]);
 //processPipesFilters(data.batch, data.store,[filterEvenStores],[splitBatchIntoChunks,priorityQueueCriteria]);
